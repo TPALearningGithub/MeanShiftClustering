@@ -291,7 +291,7 @@ namespace UI {
 			this->pnlTrack->Controls->Add(this->panel13);
 			this->pnlTrack->Controls->Add(this->pbxTrack);
 			this->pnlTrack->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->pnlTrack->Location = System::Drawing::Point(302, 86);
+			this->pnlTrack->Location = System::Drawing::Point(303, 86);
 			this->pnlTrack->Name = L"pnlTrack";
 			this->pnlTrack->Size = System::Drawing::Size(200, 200);
 			this->pnlTrack->TabIndex = 11;
@@ -407,7 +407,7 @@ namespace UI {
 			this->pnlSegment->Controls->Add(this->panel7);
 			this->pnlSegment->Controls->Add(this->pbxSegment);
 			this->pnlSegment->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->pnlSegment->Location = System::Drawing::Point(96, 86);
+			this->pnlSegment->Location = System::Drawing::Point(97, 86);
 			this->pnlSegment->Name = L"pnlSegment";
 			this->pnlSegment->Size = System::Drawing::Size(200, 200);
 			this->pnlSegment->TabIndex = 10;
