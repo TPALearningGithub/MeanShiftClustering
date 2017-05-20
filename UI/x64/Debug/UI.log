@@ -1,12 +1,8 @@
 ﻿  frmMain.cpp
-m:\computervision\segmentation\meanshiftclustering\ui\frmSegment.h(436): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(357): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(379): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(441): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  frmTrack.cpp
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(357): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(379): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(441): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(340): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(362): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(412): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  frmSegment.cpp
   Generating Code...
 m:\opencvdirs\opencv_build\install\include\opencv2\core\cvstd.hpp(596): warning C4793: 'cv::String::String': function compiled as native:
   	Found an intrinsic not supported in managed code
@@ -36,4 +32,4 @@ m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(67): warning
   	Found an intrinsic not supported in managed code
 m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef': function compiled as native:
   	Found an intrinsic not supported in managed code
-  UI.vcxproj -> M:\ComputerVision\Segmentation\MeanShiftClustering\x64\Debug\UI.exe
+  UI.vcxproj -> M:\GitHub\MeanShiftClustering\x64\Debug\UI.exe

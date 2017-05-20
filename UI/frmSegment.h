@@ -429,14 +429,6 @@ namespace UI {
 		pbxOutput->Image = Image::FromFile(tempdir);
 	}
 
-	public:Bitmap^ ToBitmap(cv::Mat& colorImage)
-	{
-		cv::cvtColor(colorImage, colorImage, CV_BGR2RGBA);
-		System::IntPtr ptr(colorImage.ptr());
-		System::Drawing::Bitmap^ b = gcnew System::Drawing::Bitmap(colorImage.cols, colorImage.rows, colorImage.step, System::Drawing::Imaging::PixelFormat::Format24bppRgb, ptr);
-		return b;
-	}
-
 	private: System::Void btnSave_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (sv->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			if (File::Exists(sv->FileName)) {

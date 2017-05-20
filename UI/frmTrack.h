@@ -27,13 +27,13 @@ namespace UI {
 	VideoCapture *capture = new VideoCapture();
 	bool canDraw = false, isRunning = false;
 	int x = 0, y = 0, windowWidth = 0, windowHeight = 0;
-	int count = 0;
 	Mat *frame = new Mat();
 	Rect *track_window = new Rect();
 	Mat *roi_hist = new Mat();
-	private: System::Windows::Forms::Button^  button1;
-
-			 TermCriteria *term_crit = new TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 10, 1);
+	TermCriteria *term_crit = new TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 10, 1);
+	// parameter
+	int const _vmin = 30, _vmax = 255, _smin = 30;
+	
 	public:
 		frmTrack(void)
 		{
@@ -99,7 +99,6 @@ namespace UI {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(frmTrack::typeid));
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->btnBrowse = (gcnew System::Windows::Forms::Button());
 			this->pbxInput = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -120,7 +119,6 @@ namespace UI {
 			// 
 			// panel6
 			// 
-			this->panel6->Controls->Add(this->button1);
 			this->panel6->Controls->Add(this->btnBrowse);
 			this->panel6->Controls->Add(this->pbxInput);
 			this->panel6->Controls->Add(this->label1);
@@ -130,22 +128,6 @@ namespace UI {
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(598, 366);
 			this->panel6->TabIndex = 17;
-			// 
-			// button1
-			// 
-			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->BackColor = System::Drawing::Color::Gainsboro;
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(232, 293);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(85, 32);
-			this->button1->TabIndex = 17;
-			this->button1->Text = L"Start";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &frmTrack::button1_Click);
 			// 
 			// btnBrowse
 			// 
@@ -166,6 +148,7 @@ namespace UI {
 			// pbxInput
 			// 
 			this->pbxInput->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->pbxInput->Cursor = System::Windows::Forms::Cursors::Cross;
 			this->pbxInput->Location = System::Drawing::Point(55, 56);
 			this->pbxInput->Name = L"pbxInput";
 			this->pbxInput->Size = System::Drawing::Size(489, 231);
@@ -298,7 +281,7 @@ namespace UI {
 			// 
 			// TimerVideo
 			// 
-			this->TimerVideo->Interval = 300;
+			this->TimerVideo->Interval = 50;
 			this->TimerVideo->Tick += gcnew System::EventHandler(this, &frmTrack::TimerVideo_Tick);
 			// 
 			// frmTrack
@@ -378,8 +361,6 @@ private: System::Void TimerVideo_Tick(System::Object^  sender, System::EventArgs
 		// Show tracked frame
 		pbxInput->Image = gcnew System::Drawing::Bitmap(frame->cols, frame->rows, frame->step, System::Drawing::Imaging::PixelFormat::Format24bppRgb, (System::IntPtr) frame->data);
 		pbxInput->Refresh();
-		count++;
-		Title->Text = count.ToString();
 	}
 	// end video.
 	else 
@@ -418,7 +399,7 @@ private: System::Void pbxInput_MouseUp(System::Object^  sender, System::Windows:
 		Mat roi = frame->clone()(*track_window);
 		Mat hsv_roi, mask;
 		cvtColor(roi, hsv_roi, COLOR_BGR2HSV);
-		inRange(hsv_roi, Scalar(0, 60, 32), Scalar(180, 255, 255),mask);
+		inRange(hsv_roi, Scalar(0, _smin, _vmin), Scalar(180, 255, _vmax),mask);
 
 		int channels[] = { 0 }, histSize[] = { 180 };
 		float range[] = { 0, 180 };
@@ -429,7 +410,7 @@ private: System::Void pbxInput_MouseUp(System::Object^  sender, System::Windows:
 		rectangle(*frame, *track_window, 255, 2);
 		// Show tracked frame
 		pbxInput->Image = gcnew System::Drawing::Bitmap(frame->cols, frame->rows, frame->step, System::Drawing::Imaging::PixelFormat::Format24bppRgb, (System::IntPtr) frame->data);
-		//TimerVideo->Start();
+		TimerVideo->Start();
 	}
 }
 
@@ -438,10 +419,6 @@ private: System::Void pbxInput_Paint(System::Object^  sender, System::Windows::F
 	{
 		e->Graphics->DrawRectangle(gcnew Pen(Color::Red, 2.0f), x, y, windowWidth, windowHeight);
 	}
-}
-
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	TimerVideo->Start();
 }
 };
 }
