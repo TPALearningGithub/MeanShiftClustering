@@ -1,0 +1,39 @@
+﻿  frmMain.cpp
+m:\computervision\segmentation\meanshiftclustering\ui\frmSegment.h(436): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(357): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(379): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(441): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  frmTrack.cpp
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(357): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(379): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\computervision\segmentation\meanshiftclustering\ui\frmTrack.h(441): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+m:\opencvdirs\opencv_build\install\include\opencv2\core\cvstd.hpp(596): warning C4793: 'cv::String::String': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(413): warning C4793: 'cv::Mat::Mat': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(703): warning C4793: 'cv::Mat::release': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(1929): warning C4793: 'cv::SparseMat::addref': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(3530): warning C4793: 'cv::UMat::addref': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(67): warning C4793: 'cv::detail::PtrOwner::incRef': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\cvstd.hpp(596): warning C4793: 'cv::String::String': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(413): warning C4793: 'cv::Mat::Mat': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(703): warning C4793: 'cv::Mat::release': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(1929): warning C4793: 'cv::SparseMat::addref': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\mat.inl.hpp(3530): warning C4793: 'cv::UMat::addref': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(67): warning C4793: 'cv::detail::PtrOwner::incRef': function compiled as native:
+  	Found an intrinsic not supported in managed code
+m:\opencvdirs\opencv_build\install\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef': function compiled as native:
+  	Found an intrinsic not supported in managed code
+  UI.vcxproj -> M:\ComputerVision\Segmentation\MeanShiftClustering\x64\Debug\UI.exe
