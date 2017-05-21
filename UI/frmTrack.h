@@ -328,6 +328,7 @@ private: System::Void btnBrowse_Click(System::Object^  sender, System::EventArgs
 		// Get Video Capture from file
 		char *fileName = (char*) System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(op->FileName).ToPointer();
 		capture = new VideoCapture(fileName);
+		frame = new Mat();
 		// Read first frame
 		capture->read(*frame);
 		// Resize Video-window
@@ -343,6 +344,18 @@ private: System::Void btnBrowse_Click(System::Object^  sender, System::EventArgs
 	}
 }
 private: System::Void TimerVideo_Tick(System::Object^  sender, System::EventArgs^  e) {
+	// re-compute the window's histogram
+	Mat roi = frame->clone()(*track_window);
+	Mat hsv_roi, mask;
+	cvtColor(roi, hsv_roi, COLOR_BGR2HSV);
+	inRange(hsv_roi, Scalar(0, _smin, _vmin), Scalar(180, 255, _vmax), mask);
+
+	int channels[] = { 0 }, histSize[] = { 180 };
+	float range[] = { 0, 180 };
+	const float* ranges[] = { range };
+	calcHist(&hsv_roi, 1, channels, mask, *roi_hist, 1, histSize, ranges);
+	normalize(*roi_hist, *roi_hist, 0, 255, NORM_MINMAX);
+
 	// get next frame
 	capture->read(*frame);
 	// tracking object in track_window
@@ -351,9 +364,6 @@ private: System::Void TimerVideo_Tick(System::Object^  sender, System::EventArgs
 		Mat hsv;
 		cvtColor(*frame, hsv, COLOR_BGR2HSV);
 		Mat dst;
-		int channels[] = { 0 };
-		float range[] = { 0, 180 };
-		const float* ranges[] = { range };
 		calcBackProject(&hsv, 1, channels, *roi_hist, dst, ranges, 1);
 		meanShift(dst, *track_window, *term_crit);
 
@@ -396,18 +406,6 @@ private: System::Void pbxInput_MouseUp(System::Object^  sender, System::Windows:
 		canDraw = false;
 		isRunning = true;
 		track_window = new Rect(x, y, windowWidth, windowHeight);
-
-		Mat roi = frame->clone()(*track_window);
-		Mat hsv_roi, mask;
-		cvtColor(roi, hsv_roi, COLOR_BGR2HSV);
-		inRange(hsv_roi, Scalar(0, _smin, _vmin), Scalar(180, 255, _vmax),mask);
-
-		int channels[] = { 0 }, histSize[] = { 180 };
-		float range[] = { 0, 180 };
-		const float* ranges[] = { range };
-		calcHist(&hsv_roi, 1, channels, mask, *roi_hist, 1, histSize, ranges);
-		normalize(*roi_hist, *roi_hist, 0, 255, NORM_MINMAX);
-
 		rectangle(*frame, *track_window, 255, 2);
 		// Show tracked frame
 		pbxInput->Image = gcnew System::Drawing::Bitmap(frame->cols, frame->rows, frame->step, System::Drawing::Imaging::PixelFormat::Format24bppRgb, (System::IntPtr) frame->data);
