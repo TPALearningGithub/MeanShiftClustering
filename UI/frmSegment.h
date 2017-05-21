@@ -2,7 +2,7 @@
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 #include <msclr\marshal_cppstd.h>
-
+#include <string>
 
 
 namespace UI {
@@ -21,7 +21,7 @@ namespace UI {
 	/// </summary>
 	public ref class frmSegment : public System::Windows::Forms::Form
 	{
-	private: System::String^ tempdir = "..\\temp\\out.jpg";
+	private: System::String^ tempdir = "..\\out.jpg";
 	public:
 		frmSegment(void)
 		{
@@ -424,8 +424,7 @@ namespace UI {
 		Mat in = imread(fileName), out;
 		pyrMeanShiftFiltering(in, out, 20, 45, 3);
 		delete pbxOutput->Image;
-		string temp = "..\\temp\\out.jpg";
-		imwrite(temp, out);
+		imwrite("..\\out.jpg" , out);
 		pbxOutput->Image = Image::FromFile(tempdir);
 	}
 

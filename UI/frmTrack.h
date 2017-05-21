@@ -24,6 +24,7 @@ namespace UI {
 	/// </summary>
 	public ref class frmTrack : public System::Windows::Forms::Form
 	{
+		int count = 0;
 	VideoCapture *capture = new VideoCapture();
 	bool canDraw = false, isRunning = false;
 	int x = 0, y = 0, windowWidth = 0, windowHeight = 0;
@@ -33,7 +34,8 @@ namespace UI {
 	TermCriteria *term_crit = new TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 10, 1);
 	// parameter
 	int const _vmin = 30, _vmax = 255, _smin = 30;
-	
+
+
 	public:
 		frmTrack(void)
 		{
@@ -353,7 +355,6 @@ private: System::Void TimerVideo_Tick(System::Object^  sender, System::EventArgs
 		float range[] = { 0, 180 };
 		const float* ranges[] = { range };
 		calcBackProject(&hsv, 1, channels, *roi_hist, dst, ranges, 1);
-		
 		meanShift(dst, *track_window, *term_crit);
 
 		rectangle(*frame, *track_window, 255, 2);
@@ -420,5 +421,6 @@ private: System::Void pbxInput_Paint(System::Object^  sender, System::Windows::F
 		e->Graphics->DrawRectangle(gcnew Pen(Color::Red, 2.0f), x, y, windowWidth, windowHeight);
 	}
 }
+
 };
 }

@@ -1,8 +1,11 @@
 ﻿  frmMain.cpp
-m:\github\meanshiftclustering\ui\frmTrack.h(340): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\github\meanshiftclustering\ui\frmTrack.h(362): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-m:\github\meanshiftclustering\ui\frmTrack.h(412): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  frmSegment.cpp
+m:\github\meanshiftclustering\ui\frmTrack.h(342): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(363): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(413): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  frmTrack.cpp
+m:\github\meanshiftclustering\ui\frmTrack.h(342): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(363): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+m:\github\meanshiftclustering\ui\frmTrack.h(413): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
 m:\opencvdirs\opencv_build\install\include\opencv2\core\cvstd.hpp(596): warning C4793: 'cv::String::String': function compiled as native:
   	Found an intrinsic not supported in managed code
